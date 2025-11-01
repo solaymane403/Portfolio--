@@ -6,7 +6,6 @@ export function useTheme() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    // Check system preference on mount
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     

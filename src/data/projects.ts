@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 export interface Project {
   id: number;
   title: string;
   description: string;
   longDescription: string;
-  image: string | string[]; // Support single image or array of images for carousel
+  image: string | string[]; 
   techStack: string[];
   liveUrl: string;
   githubUrl: string;

@@ -16,14 +16,12 @@ export default function Projects() {
     : projects.filter(p => p.category === filter);
 
 
-  // Trigger animation on filter change
+
   useEffect(() => {
     setIsAnimating(true);
     const timer = setTimeout(() => setIsAnimating(false), 100);
     return () => clearTimeout(timer);
   }, [filter]);
-
-  // Auto-advance carousel for projects with multiple images
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => {
@@ -36,8 +34,7 @@ export default function Projects() {
         });
         return updated;
       });
-    }, 3000); // Change image every 3 seconds
-
+    }, 3000);  // Change image time
     return () => clearInterval(interval);
   }, [filteredProjects]);
 
@@ -118,7 +115,6 @@ export default function Projects() {
               >
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
-                  {/* Project image: support full URLs, root-relative paths, or filenames in public/ */}
                   {(() => {
                     const images = Array.isArray(project.image) ? project.image : [project.image];
                     const currentIndex = currentImageIndex[project.id] || 0;

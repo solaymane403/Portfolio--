@@ -76,11 +76,8 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-24 px-4 relative overflow-hidden">
-      {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent dark:via-blue-950/10 pointer-events-none" />
-      
       <div className="max-w-6xl mx-auto relative">
-        {/* Header with animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +107,6 @@ export default function Experience() {
           </motion.p>
         </motion.div>
 
-        {/* Stats - Clean minimal cards with subtle animations */}
         <div className="grid grid-cols-3 gap-6 mb-16">
           {stats.map((stat, index) => (
             <motion.div
@@ -122,7 +118,7 @@ export default function Experience() {
               whileHover={{ y: -2 }}
               className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-800/30 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all overflow-hidden group"
             >
-              {/* Subtle gradient overlay on hover */}
+              {/* Subtle */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative">
@@ -137,7 +133,7 @@ export default function Experience() {
           ))}
         </div>
 
-        {/* Timeline - Modern clean design with animations */}
+        {/* Timeline */}
         <div className="space-y-6">
           {experiences.map((exp, index) => {
             const IconComponent = exp.icon;
@@ -155,7 +151,7 @@ export default function Experience() {
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div className="flex gap-4">
-                  {/* Icon with animation */}
+                  {/* Icon */}
                   <motion.div 
                     className="flex-shrink-0"
                     whileHover={{ scale: 1.05, rotate: 5 }}
@@ -195,7 +191,7 @@ export default function Experience() {
                       {exp.description}
                     </p>
 
-                    {/* Education Timeline - only for education type */}
+                    {/* Education Timeline*/}
                     {'education' in exp && exp.education && (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {exp.education.map((edu: any, idx: number) => {
@@ -278,11 +274,10 @@ export default function Experience() {
                       </div>
                     )}
 
-                    {/* Tech Stack with stagger animation and colors - only show if stack has items */}
+                    {/* Tech Stack with stagger animation and colors*/}
                     {exp.stack.length > 0 && (
                       <div className="flex flex-wrap gap-2 mt-4">
                         {exp.stack.map((tech, i) => {
-                        // Assign different colors to different tech types
                         const getColor = (techName: string) => {
                           if (techName.includes('React') || techName.includes('Next')) 
                             return 'from-cyan-500/10 to-blue-500/10 border-cyan-500/30 dark:border-cyan-500/20 text-cyan-700 dark:text-cyan-400 hover:border-cyan-500/50';
