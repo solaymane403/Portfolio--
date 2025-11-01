@@ -1,4 +1,4 @@
-# Portfolio Website - Solaymane Hadach
+# Portfolio Website - Haddach soulaimane
 
 This is my personal portfolio website, built with **Next.js**, **React**, and **Tailwind CSS**.  
 It showcases my skills, projects, and experience as a web developer. The site also includes a contact form integrated with **Formspree** for easy communication.
