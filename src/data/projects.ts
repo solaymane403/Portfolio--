@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   description: string;
   longDescription: string;
-  image: string;
+  image: string | string[]; // Support single image or array of images for carousel
   techStack: string[];
   liveUrl: string;
   githubUrl: string;
@@ -12,78 +12,83 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  {
-    id: 1,
-    title: "E-Commerce Dashboard",
-    description: "Full-stack admin dashboard with real-time analytics",
-    longDescription: "A complete e-commerce admin panel built with Next.js and MongoDB. Features include real-time sales analytics, product management, user authentication, and order tracking.",
-    image: "docbok.jpg",
-    techStack: ["Next.js", "React", "MongoDB", "Node.js", "Tailwind CSS", "Chart.js"],
-    liveUrl: "https://github.com/solaymane403/booking-Apps",
-    githubUrl: "https://github.com/solaymane403/booking-Apps",
-    category: "fullstack",
-    featured: true,
-  },
+{
+  id: 1,
+  title: "Weather Dashboard",
+  description: "A responsive weather app with real-time forecasts and modern UI.",
+  longDescription:
+    "The Weather Dashboard is a sleek and responsive web application that provides real-time weather data and a detailed 5-day forecast for any city worldwide. Built with React, TypeScript, Tailwind CSS, and Webpack, it offers a clean interface, smooth performance, and accurate data powered by the OpenWeatherMap API.",
+  image: ["weather-1.png", "weather-2.png", "weather-3.png"],
+  techStack: ["React", "TypeScript", "Tailwind CSS", "Webpack", "OpenWeatherMap API"],
+  liveUrl: "https://weather-oha.netlify.app/",
+  githubUrl: "https://github.com/solaymane403/Weather-dashboard",
+  category: "frontend",
+  featured: true,
+},
   {
     id: 2,
-    title: "AI Image Generator",
-    description: "AI-powered image generation using Python & OpenAI",
-    longDescription: "An interactive web app that generates images from text descriptions using OpenAI's DALL-E API. Built with Python Flask backend and React frontend.",
-    image: "/projects/ai-generator.jpg",
-    techStack: ["Python", "Flask", "React", "OpenAI API", "Tailwind CSS"],
-    liveUrl: "https://ai-image-gen-demo.vercel.app",
+    title: "Tic-Tac-Toe-Game",
+    description: "Tic-Tac-Toe Game — Play for free against the AI (Easy / Medium / Hard) without logging in. Ranked play, the dashboard, and multiplayer require you to log in.",
+    longDescription: "Tech Stack: React 18, Tailwind CSS, PostCSS, Autoprefixer, Axios, STOMP, SockJS, Context API, lucide-react, React Testing Library, Jest, JDK 25, Maven Wrapper, MySQL, PowerShell.",
+    image: ["gamehub-1.png","gamehub-2.png","gamehub-3.png"],
+    techStack: ["React 18", "Tailwind CSS", "PostCSS", "Axios", "STOMP", "SockJS", "lucide-react",  "JDK 25", "Maven Wrapper", "MySQL"],
+    liveUrl: "https://github.com/solaymane403/Tic-Tac-Toe-Game.git",
+    githubUrl: "https://github.com/solaymane403/Tic-Tac-Toe-Game.git",
+    category: "static",
+    featured: false,
+  },
+
+  {
+    id: 3,
+    title: "the new path of 2021 portfolio site ",
+    description: "the new path of 2021 portfolio site ",
+    longDescription: "",
+    image: ["2021-1.png", "2021-2.png", "2021-3.png", "2021-4.png", "2021-5.png"],
+    techStack: ["HTML5", "CSS3", "JavaScript"],
+    liveUrl: "https://soulaimneper.netlify.app",
     githubUrl: "https://github.com/yourusername/ai-image-generator",
     category: "ai",
     featured: true,
   },
   {
-    id: 3,
-    title: "Task Manager Pro",
-    description: "Modern todo app with drag-and-drop functionality",
-    longDescription: "A feature-rich task management application with drag-and-drop boards, categories, deadlines, and local storage persistence. Fully responsive design.",
-    image: "/projects/task-manager.jpg",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "React DnD"],
-    liveUrl: "https://taskmanager-pro.vercel.app",
+    id: 4,
+    title: "2021 portfolio",
+    description: "Modern",
+    longDescription: "",
+    image: ["2021 web-1.png","2021 web-2.png","2021 web-3.png"],
+    techStack: ["HTML5", "CSS3"],
+    liveUrl: "https://oldstore.netlify.app",
     githubUrl: "https://github.com/yourusername/task-manager",
     category: "frontend",
     featured: true,
   },
-  {
-    id: 4,
-    title: "Weather Forecast App",
-    description: "Real-time weather data with beautiful UI",
-    longDescription: "Get current weather conditions and 7-day forecasts for any location. Features animated weather icons, hourly forecasts, and air quality index.",
-    image: "/projects/weather.jpg",
-    techStack: ["React", "OpenWeather API", "CSS3", "Axios"],
-    liveUrl: "https://weather-forecast-demo.vercel.app",
-    githubUrl: "https://github.com/yourusername/weather-app",
-    category: "frontend",
-    featured: false,
-  },
-  {
+    {
     id: 5,
-    title: "Modern Landing Page",
-    description: "Responsive business landing with smooth animations",
-    longDescription: "A sleek, modern landing page template for businesses. Features smooth scroll animations, contact form, testimonials section, and fully responsive design.",
-    image: "/projects/landing.jpg",
-    techStack: ["HTML5", "CSS3", "JavaScript", "GSAP", "Tailwind CSS"],
-    liveUrl: "https://modern-landing-demo.netlify.app",
-    githubUrl: "https://github.com/yourusername/landing-page",
-    category: "static",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Blog Platform",
-    description: "Full-stack blog with markdown support",
-    longDescription: "A complete blogging platform with user authentication, markdown editor, comments system, and admin dashboard. Built with the MERN stack.",
-    image: "/projects/blog.jpg",
-    techStack: ["Next.js", "MongoDB", "Express", "Node.js", "NextAuth", "MDX"],
+    title: "ready welcome page for users",
+    description: "full welcome page",
+    longDescription: "",
+    image:["welcome-1.png","welcome-2.png"],
+    techStack: ["HTML5", "CSS3", "JavaScript"],
     liveUrl: "https://blog-platform-demo.vercel.app",
     githubUrl: "https://github.com/yourusername/blog-platform",
     category: "fullstack",
     featured: false,
   },
+{
+  id: 6,
+  title: "MY Calculator",
+  description: "A simple and responsive calculator built with pure HTML, CSS, and JavaScript.",
+  longDescription:
+    "MY Calculator is a lightweight and responsive web application developed using pure HTML, CSS, and JavaScript. It performs basic arithmetic operations such as addition, subtraction, multiplication, and division with smooth button interactions and a modern, minimal UI design. This project highlights clean front-end structure, CSS styling, and DOM manipulation techniques without relying on frameworks.",
+  image: ["Calculator.png"],
+  techStack: ["HTML5", "CSS3", "JavaScript"],
+  liveUrl: "https://culios.netlify.app/",
+  githubUrl: "https://github.com/solaymane403/MY-Calculator",
+  category: "frontend",
+  featured: false,
+},
+
+
 ];
 
 export const featuredProjects = projects.filter(p => p.featured);

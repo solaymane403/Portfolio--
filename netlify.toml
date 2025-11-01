@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Ensure Netlify handles Next.js (SSR/ISR/RSC)
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
