@@ -12,14 +12,9 @@ import GlowCursor from '@/components/GlowCursor';
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden">
-      {/* Background Effects */}
       <ParticleSystem />
-      
-      {/* UI Enhancements */}
       <ScrollProgress />
       <GlowCursor />
-      
-      {/* Main Sections */}
       <Navbar />
       <Hero />
       <Projects />

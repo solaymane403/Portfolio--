@@ -24,11 +24,9 @@ export default function TypingEffect({
     
     const timeout = setTimeout(() => {
       if (!isDeleting) {
-        // Typing
         if (currentText.length < targetText.length) {
           setCurrentText(targetText.slice(0, currentText.length + 1));
         } else {
-          // Finished typing, wait then start deleting
           setTimeout(() => setIsDeleting(true), delay);
         }
       } else {
@@ -36,7 +34,6 @@ export default function TypingEffect({
         if (currentText.length > 0) {
           setCurrentText(currentText.slice(0, -1));
         } else {
-          // Finished deleting, move to next text
           setIsDeleting(false);
           setCurrentTextIndex((prev) => (prev + 1) % texts.length);
         }

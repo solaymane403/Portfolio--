@@ -49,7 +49,6 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         {children}
-        {/* Background music controller (client-side) */}
         <BackgroundMusic />
       </body>
     </html>

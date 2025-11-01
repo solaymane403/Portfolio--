@@ -149,7 +149,7 @@ export default function BackgroundMusic() {
 
   return (
     <div className="fixed bottom-24 right-8 z-50 group">
-      {/* Track Info - Appears on hover */}
+      {/* Track Info */}
       <div className="absolute bottom-full right-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
         <div className="bg-gradient-to-r from-blue-500/90 to-purple-500/90 backdrop-blur-md text-white px-4 py-2 rounded-xl shadow-2xl border border-white/20">
           <p className="text-sm font-semibold whitespace-nowrap">
@@ -161,7 +161,7 @@ export default function BackgroundMusic() {
         </div>
       </div>
 
-      {/* Main Player - Modern Glassmorphic Design */}
+      {/* Main Player */}
   <div className="bg-gradient-to-br from-white/95 to-gray-50/95 dark:from-gray-800/95 dark:to-gray-900/95 backdrop-blur-xl border border-white/40 dark:border-gray-700/40 shadow-2xl rounded-2xl p-3 flex flex-col gap-2 min-w-[220px] text-sm transition-all duration-300 hover:shadow-blue-500/20">
         
         {/* Controls Row */}
@@ -175,7 +175,7 @@ export default function BackgroundMusic() {
             <SkipBack className="w-3.5 h-3.5" />
           </button>
 
-          {/* Play / Pause - Large Central Button */}
+          {/* Play / Pause*/}
           <button
             onClick={togglePlay}
             className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 text-white flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all relative overflow-hidden group/btn"
@@ -206,7 +206,7 @@ export default function BackgroundMusic() {
             {muted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
           </button>
 
-          {/* Volume Slider with Music Icon */}
+          {/* Volume*/}
           <div className="flex-1 flex items-center gap-2">
             <input
               type="range"
@@ -222,7 +222,7 @@ export default function BackgroundMusic() {
           </div>
         </div>
 
-        {/* Progress indicator dots */}
+        {/* Progress */}
         <div className="flex justify-center gap-1 pt-1">
           {TRACKS.map((_, idx) => (
             <div
@@ -236,8 +236,6 @@ export default function BackgroundMusic() {
           ))}
         </div>
       </div>
-
-      {/* Error Message */}
       {error && (
         <div className="mt-2 text-xs text-center text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-lg">
           {error}

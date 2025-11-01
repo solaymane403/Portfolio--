@@ -164,7 +164,6 @@ export default function Skills() {
           {/* Skills Display */}
           <AnimatePresence mode="wait">
             {activeCategory === 'all' ? (
-              // Compact grouped view for "All Skills"
               <motion.div
                 key="all"
                 initial={{ opacity: 0, y: 20 }}

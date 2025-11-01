@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import React, { useState } from 'react';
@@ -82,48 +83,14 @@ export default function Contact() {
     });
 
     try {
-      // OPTION 1: Using Formspree (Easy setup)
-      // 1. Go to https://formspree.io
-      // 2. Create an account and get your form ID
-      // 3. Replace 'YOUR_FORM_ID' below with your actual form ID
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+
+      const response = await fetch('https://formspree.io/f/xpwoonea', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
-
-      /* OPTION 2: Using EmailJS (More features)
-      // 1. Go to https://www.emailjs.com
-      // 2. Create account and set up email service
-      // 3. Install: npm install @emailjs/browser
-      // 4. Import: import emailjs from '@emailjs/browser';
-      // 5. Use this code:
-      
-      await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        },
-        'YOUR_PUBLIC_KEY'
-      );
-      */
-
-      /* OPTION 3: Using your own backend API
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      */
-
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
@@ -144,7 +111,6 @@ export default function Contact() {
       ...prev,
       [name]: value
     }));
-    // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
         ...prev,

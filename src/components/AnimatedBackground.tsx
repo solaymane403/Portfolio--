@@ -57,7 +57,7 @@ export default function AnimatedBackground() {
         ctx.fill();
       });
 
-      // Draw connections
+
       particles.forEach((a, i) => {
         particles.slice(i + 1).forEach((b) => {
           const dx = a.x - b.x;
