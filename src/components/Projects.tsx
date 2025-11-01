@@ -1,12 +1,13 @@
 'use client';
 
-import { ExternalLink, Github, Folder, Star, Search } from 'lucide-react';
+import { ExternalLink, Github, Folder, Star, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { useState, useEffect } from 'react';
 
 export default function Projects() {
   const [filter, setFilter] = useState<string>('all');
   const [isAnimating, setIsAnimating] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>({});
   
   const categories = ['all', 'fullstack', 'frontend', 'ai', 'static'];
   
@@ -14,15 +15,6 @@ export default function Projects() {
     ? projects 
     : projects.filter(p => p.category === filter);
 
-  // Dynamic gradient colors for project cards
-  const gradients = [
-    'from-purple-500 via-pink-500 to-red-500',
-    'from-blue-500 via-cyan-500 to-teal-500',
-    'from-indigo-500 via-purple-500 to-pink-500',
-    'from-green-500 via-emerald-500 to-teal-500',
-    'from-orange-500 via-red-500 to-pink-500',
-    'from-cyan-500 via-blue-500 to-indigo-500',
-  ];
 
   // Trigger animation on filter change
   useEffect(() => {
@@ -30,6 +22,51 @@ export default function Projects() {
     const timer = setTimeout(() => setIsAnimating(false), 100);
     return () => clearTimeout(timer);
   }, [filter]);
+
+  // Auto-advance carousel for projects with multiple images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => {
+        const updated = { ...prev };
+        filteredProjects.forEach((project) => {
+          const images = Array.isArray(project.image) ? project.image : [project.image];
+          if (images.length > 1) {
+            updated[project.id] = ((prev[project.id] || 0) + 1) % images.length;
+          }
+        });
+        return updated;
+      });
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [filteredProjects]);
+
+  const handlePrevImage = (projectId: number, imagesLength: number, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => ({
+      ...prev,
+      [projectId]: ((prev[projectId] || 0) - 1 + imagesLength) % imagesLength,
+    }));
+  };
+
+  const handleNextImage = (projectId: number, imagesLength: number, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => ({
+      ...prev,
+      [projectId]: ((prev[projectId] || 0) + 1) % imagesLength,
+    }));
+  };
+
+  const handleDotClick = (projectId: number, index: number, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => ({
+      ...prev,
+      [projectId]: index,
+    }));
+  };
 
   return (
     <section id="projects" >
@@ -80,10 +117,77 @@ export default function Projects() {
                 }}
               >
                 {/* Project Image */}
-                <div className={`relative h-48 bg-gradient-to-br ${gradients[index % gradients.length]} overflow-hidden`}>
-                <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                  <Folder className="w-32 h-32 text-white" />
-                </div>
+                <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
+                  {/* Project image: support full URLs, root-relative paths, or filenames in public/ */}
+                  {(() => {
+                    const images = Array.isArray(project.image) ? project.image : [project.image];
+                    const currentIndex = currentImageIndex[project.id] || 0;
+                    const currentImg = images[currentIndex];
+                    
+                    const imgSrc = currentImg
+                      ? (currentImg.startsWith('http') || currentImg.startsWith('/')
+                          ? currentImg
+                          : `/${currentImg}`)
+                      : '';
+
+                    return (
+                      <>
+                        {imgSrc ? (
+                          <img
+                            src={imgSrc}
+                            alt={`${project.title} - Image ${currentIndex + 1}`}
+                            className="w-full h-full object-cover transition-opacity duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                            <Folder className="w-20 h-20 text-gray-400" />
+                          </div>
+                        )}
+
+                        {/* Carousel Controls - Only show if multiple images */}
+                        {images.length > 1 && (
+                          <>
+                            {/* Navigation Arrows */}
+                            <button
+                              onClick={(e) => handlePrevImage(project.id, images.length, e)}
+                              className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                              aria-label="Previous image"
+                            >
+                              <ChevronLeft className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={(e) => handleNextImage(project.id, images.length, e)}
+                              className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                              aria-label="Next image"
+                            >
+                              <ChevronRight className="w-4 h-4" />
+                            </button>
+
+                            {/* Dots Indicator */}
+                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                              {images.map((_, idx) => (
+                                <button
+                                  key={idx}
+                                  onClick={(e) => handleDotClick(project.id, idx, e)}
+                                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                    idx === currentIndex
+                                      ? 'bg-white w-6'
+                                      : 'bg-white/50 hover:bg-white/75'
+                                  }`}
+                                  aria-label={`Go to image ${idx + 1}`}
+                                />
+                              ))}
+                            </div>
+
+                            {/* Image Counter */}
+                            <div className="absolute top-2 right-2 px-2 py-1 bg-black/60 text-white text-xs rounded-full font-medium">
+                              {currentIndex + 1} / {images.length}
+                            </div>
+                          </>
+                        )}
+                      </>
+                    );
+                  })()}
                 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">

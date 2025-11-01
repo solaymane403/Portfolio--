@@ -77,7 +77,7 @@ export default function Hero() {
                     'Full-Stack Developer 💻',
                     'Front-End: React & Next.js ⚛️',
                     'Back-End: Node.js & MERN Stack 🛠️',
-                    'WordPress Expert 🌐',
+                    'REST API 🌐',
                     'AI & Python Enthusiast 🤖',
                     'PC & IT Systems Technician 🖥️'
                   ]}

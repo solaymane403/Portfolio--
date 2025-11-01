@@ -1,230 +1,326 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Award, Wrench, CheckCircle2, TrendingUp } from 'lucide-react';
+import { Briefcase, GraduationCap, Code2, Cpu, ArrowUpRight } from 'lucide-react';
 import CounterAnimation from './CounterAnimation';
 
 const experiences = [
   {
     icon: Briefcase,
-    title: 'Freelance Web Developer',
-    organization: 'Self-Employed',
+    title: 'Developer',
+    company: 'Self-Employed',
     period: '2023 - Present',
-    description: 'Building custom websites and web applications for clients. Specialized in React, Next.js, and modern front-end development.',
-    achievements: [
-      'Delivered 10+ successful projects',
-      'Maintained 98% client satisfaction rate',
-      'Built responsive, SEO-optimized websites'
-    ],
-    color: 'from-blue-500 to-cyan-500',
+    type: 'Full-time',
+    typeColor: 'from-emerald-500 to-green-500',
+    description: 'Building custom web and mobile applications using React, React Native, Next.js, and Java Spring Boot. Focused on responsive design, real-time features, cloud integration, and modern UI/UX best practices.',
+    stack: ['React', 'Next.js', 'Spring Boot', 'TypeScript', 'Tailwind CSS'],
   },
   {
-    icon: Wrench,
+    icon: Cpu,
     title: 'Technical Support Specialist',
-    organization: 'Tech Solutions Co.',
+    company: 'Tech Solutions Co.',
     period: '2022 - 2023',
-    description: 'Provided technical support for hardware and software issues. Specialized in PC maintenance, troubleshooting, and system optimization.',
-    achievements: [
-      'Resolved 200+ technical issues',
-      'Reduced average resolution time by 30%',
-      'Trained new team members on best practices'
-    ],
-    color: 'from-purple-500 to-pink-500',
+    type: 'Full-time',
+    typeColor: 'from-emerald-500 to-green-500',
+    description: 'Delivered IT support and infrastructure solutions, focusing on system optimization and cloud workflows.',
+    stack: ['Cloud Computing', 'System Administration', 'Troubleshooting'],
   },
   {
     icon: GraduationCap,
-    title: 'Web Development Bootcamp',
-    organization: 'Online Learning Platform',
-    period: '2022',
-    description: 'Intensive full-stack web development program covering modern JavaScript frameworks, backend technologies, and deployment strategies.',
-    achievements: [
-      'Completed 500+ hours of coursework',
-      'Built 15+ portfolio projects',
-      'Graduated with honors'
-    ],
-    color: 'from-orange-500 to-red-500',
-  },
-  {
-    icon: Award,
-    title: 'Certifications & Courses',
-    organization: 'Various Platforms',
+    title: 'Education & Certifications',
+    company: 'OFPPT & Online Platforms',
     period: '2021 - Present',
-    description: 'Continuous learning through online courses and certifications in web development, cloud technologies, and modern frameworks.',
-    achievements: [
-      'React Developer Certification',
-      'Node.js Backend Specialization',
-      'Git & GitHub Mastery Course'
-    ],
-    color: 'from-green-500 to-teal-500',
+    type: 'Education',
+    typeColor: 'from-blue-500 to-purple-500',
+    description: 'Comprehensive education in web development, entrepreneurship, and technical systems. Continuous learning in modern technologies.',
+    stack: [],
+    education: [
+      { 
+        year: '2025', 
+        title: 'Diploma in Web Development', 
+        school: 'OFPPT',
+        icon: Code2,
+        skills: ['HTML', 'CSS', 'JavaScript', 'Web Development']
+      },
+      { 
+        year: '2024', 
+        title: 'Innovation Entrepreneuriale Program', 
+        school: 'OFPPT',
+        icon: Briefcase,
+        skills: ['Entrepreneurship', 'Innovation', 'Project Management']
+      },
+      { 
+        year: '2024', 
+        title: 'Industrial Electrical Maintenance', 
+        school: 'OFPPT',
+        icon: Cpu,
+        skills: ['Electrical Systems', 'Maintenance', 'Troubleshooting']
+      },
+      { 
+        year: '2025+', 
+        title: 'Continuous Learning', 
+        school: 'Various Platforms',
+        icon: GraduationCap,
+        skills: ['C', 'Angular', 'AI Integration', 'DevOps']
+      },
+    ]
   },
 ];
 
 export default function Experience() {
   const stats = [
-    { number: 2, suffix: '+', label: 'Years Experience' },
-    { number: 15, suffix: '+', label: 'Projects Completed' },
-    { number: 10, suffix: '+', label: 'Happy Clients' },
-    { number: 98, suffix: '%', label: 'Success Rate' },
+    { number: 4, suffix: '+', label: 'Years Experience' },
+    { number: 14, suffix: '+', label: 'Projects Completed' },
+    { number: 80, suffix: '%', label: 'Success Rate' },
   ];
 
   return (
-    <section id="experience" className="py-20 px-4 bg-gradient-to-b">
-      <div className="max-w-7xl mx-auto">
+    <section id="experience" className="py-24 px-4 relative overflow-hidden">
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent dark:via-blue-950/10 pointer-events-none" />
+      
+      <div className="max-w-6xl mx-auto relative">
+        {/* Header with animation */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
+          className="mb-16"
         >
-          {/* Header */}
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full mb-4"
-            >
-              <TrendingUp className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-              <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                Career Journey
-              </span>
-            </motion.div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Experience & Education
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              My professional journey and continuous learning path in tech
-            </p>
-          </div>
-
-          {/* Stats Grid */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+            className="inline-block"
           >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center group cursor-pointer"
-              >
-                <motion.div 
-                  className="text-4xl md:text-5xl font-bold mb-2"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                    <CounterAnimation end={stat.number} suffix={stat.suffix} />
-                  </span>
-                </motion.div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent mb-3">
+              Experience
+            </h2>
+          </motion.div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-gray-600 dark:text-gray-400"
+          >
+            Professional background and learning journey
+          </motion.p>
+        </motion.div>
+
+        {/* Stats - Clean minimal cards with subtle animations */}
+        <div className="grid grid-cols-3 gap-6 mb-16">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -2 }}
+              className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-800/30 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all overflow-hidden group"
+            >
+              {/* Subtle gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative">
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-1">
+                  <CounterAnimation end={stat.number} suffix={stat.suffix} />
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">
                   {stat.label}
                 </div>
-                <motion.div
-                  className="mt-3 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-          {/* Timeline */}
-          <div className="max-w-5xl mx-auto relative">
-            {/* Vertical Line */}
-            {/* <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-600 via-blue-500 to-purple-600 md:-translate-x-0.5" /> */}
-
-            {experiences.map((exp, index) => {
-              const IconComponent = exp.icon;
-              const isEven = index % 2 === 0;
-              
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: isEven ? -100 : 100 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className={`relative mb-16 md:mb-20`}
-                >
-                  {/* Timeline Dot with Icon */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ type: 'spring', delay: index * 0.2 + 0.3 }}
-                    viewport={{ once: true }}
-                    className="absolute left-8 md:left-1/2 -translate-x-1/2 z-10"
+        {/* Timeline - Modern clean design with animations */}
+        <div className="space-y-6">
+          {experiences.map((exp, index) => {
+            const IconComponent = exp.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ x: 4 }}
+                className="relative bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50 transition-all duration-300 group"
+              >
+                {/* Subtle line accent */}
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className="flex gap-4">
+                  {/* Icon with animation */}
+                  <motion.div 
+                    className="flex-shrink-0"
+                    whileHover={{ scale: 1.05, rotate: 5 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                      className={`w-20 h-20 bg-gradient-to-br ${exp.color} rounded-2xl flex items-center justify-center shadow-2xl`}
-                    >
-                      <IconComponent className="w-10 h-10 text-white" />
-                    </motion.div>
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center group-hover:from-blue-50 group-hover:to-purple-50 dark:group-hover:from-blue-900/20 dark:group-hover:to-purple-900/20 transition-all duration-300 shadow-sm">
+                      <IconComponent className="w-6 h-6 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300" />
+                    </div>
                   </motion.div>
 
-                  {/* Content Card */}
-                  <div className={`ml-32 md:ml-0 ${isEven ? 'md:mr-1/2 md:pr-16' : 'md:ml-1/2 md:pl-16'}`}>
-                    <motion.div
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 hover:shadow-2xl relative overflow-hidden group"
-                    >
-                      {/* Animated gradient overlay */}
-                      <motion.div
-                        className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-0 group-hover:opacity-5 transition-opacity`}
-                      />
-
-                      {/* Period Badge */}
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        className={`inline-block px-4 py-2 bg-gradient-to-r ${exp.color} text-white rounded-full text-sm font-bold mb-4 shadow-lg`}
-                      >
-                        {exp.period}
-                      </motion.div>
-
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                        {exp.title}
-                      </h3>
-                      
-                      <p className="text-lg text-purple-600 dark:text-purple-400 font-semibold mb-4">
-                        {exp.organization}
-                      </p>
-                      
-                      <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                        {exp.description}
-                      </p>
-
-                      {/* Achievements List */}
-                      <div className="space-y-3">
-                        {exp.achievements.map((achievement, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, x: isEven ? 20 : -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.1 * i }}
-                            viewport={{ once: true }}
-                            className="flex items-start gap-3 group/item"
-                          >
-                            <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0 text-green-500 group-hover/item:scale-125 transition-transform" />
-                            <span className="text-sm text-gray-600 dark:text-gray-400 group-hover/item:text-gray-900 dark:group-hover/item:text-gray-200 transition-colors">
-                              {achievement}
-                            </span>
-                          </motion.div>
-                        ))}
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-4 mb-2">
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                          {exp.title}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm">
+                          {exp.company}
+                        </p>
                       </div>
-                    </motion.div>
+                      <div className="flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-3 text-sm flex-shrink-0">
+                        <motion.span 
+                          className={`px-3 py-1.5 bg-gradient-to-r ${exp.typeColor} text-white rounded-lg text-xs font-semibold shadow-sm`}
+                          whileHover={{ scale: 1.05, y: -2 }}
+                          transition={{ type: 'spring', stiffness: 400 }}
+                        >
+                          {exp.type}
+                        </motion.span>
+                        <span className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-medium bg-gray-100 dark:bg-gray-700/50 px-3 py-1 rounded-md">
+                          {exp.period}
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                      {exp.description}
+                    </p>
+
+                    {/* Education Timeline - only for education type */}
+                    {'education' in exp && exp.education && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {exp.education.map((edu: any, idx: number) => {
+                          const EduIcon = edu.icon;
+                          return (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.3, delay: idx * 0.1 }}
+                              viewport={{ once: true }}
+                              className="relative flex flex-col gap-3 p-3 rounded-lg bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/10 dark:to-purple-900/10 border border-blue-200/30 dark:border-blue-700/30 hover:border-blue-300/50 dark:hover:border-blue-600/50 transition-all"
+                            >
+                              {/* Year badge in top right corner */}
+                              <div className="absolute top-2 right-2">
+                                <motion.span
+                                  initial={{ opacity: 0, scale: 0.8 }}
+                                  whileInView={{ opacity: 1, scale: 1 }}
+                                  transition={{ duration: 0.2, delay: 0.2 }}
+                                  viewport={{ once: true }}
+                                  whileHover={{ scale: 1.05 }}
+                                  className="px-2.5 py-1 bg-gradient-to-br from-blue-500 to-purple-500 text-white rounded-md text-xs font-bold border border-blue-400/30 shadow-sm"
+                                >
+                                  {edu.year}
+                                </motion.span>
+                              </div>
+
+                              <div className="flex items-start gap-3">
+                                {/* Icon instead of year */}
+                                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-md">
+                                  <EduIcon className="w-6 h-6 text-white" />
+                                </div>
+                                <div className="flex-1 min-w-0 pr-12">
+                                  <div className="font-semibold text-gray-900 dark:text-white text-sm leading-tight mb-1">
+                                    {edu.title}
+                                  </div>
+                                  <div className="text-xs text-gray-600 dark:text-gray-400">
+                                    {edu.school}
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              {/* Skills for this education */}
+                              {edu.skills && (
+                                <div className="flex flex-wrap gap-1.5">
+                                  {edu.skills.map((skill: string, skillIdx: number) => {
+                                    const getColor = (techName: string) => {
+                                      if (techName.includes('Web') || techName.includes('HTML') || techName.includes('CSS') || techName.includes('JavaScript'))
+                                        return 'from-orange-500/10 to-red-500/10 border-orange-500/30 dark:border-orange-500/20 text-orange-700 dark:text-orange-400';
+                                      if (techName.includes('Angular') || techName.includes('C'))
+                                        return 'from-red-500/10 to-pink-500/10 border-red-500/30 dark:border-red-500/20 text-red-700 dark:text-red-400';
+                                      if (techName.includes('Electrical') || techName.includes('Maintenance') || techName.includes('Troubleshooting'))
+                                        return 'from-yellow-500/10 to-orange-500/10 border-yellow-500/30 dark:border-yellow-500/20 text-yellow-700 dark:text-yellow-400';
+                                      if (techName.includes('Entrepreneur') || techName.includes('Innovation') || techName.includes('Project'))
+                                        return 'from-pink-500/10 to-rose-500/10 border-pink-500/30 dark:border-pink-500/20 text-pink-700 dark:text-pink-400';
+                                      if (techName.includes('AI') || techName.includes('DevOps'))
+                                        return 'from-purple-500/10 to-indigo-500/10 border-purple-500/30 dark:border-purple-500/20 text-purple-700 dark:text-purple-400';
+                                      return 'from-blue-500/10 to-indigo-500/10 border-blue-500/30 dark:border-blue-500/20 text-blue-700 dark:text-blue-400';
+                                    };
+                                    
+                                    return (
+                                      <motion.span
+                                        key={skillIdx}
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.2, delay: skillIdx * 0.03 }}
+                                        viewport={{ once: true }}
+                                        whileHover={{ scale: 1.05 }}
+                                        className={`px-2 py-1 bg-gradient-to-br ${getColor(skill)} rounded-md text-xs font-medium border transition-all cursor-default`}
+                                      >
+                                        {skill}
+                                      </motion.span>
+                                    );
+                                  })}
+                                </div>
+                              )}
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {/* Tech Stack with stagger animation and colors - only show if stack has items */}
+                    {exp.stack.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {exp.stack.map((tech, i) => {
+                        // Assign different colors to different tech types
+                        const getColor = (techName: string) => {
+                          if (techName.includes('React') || techName.includes('Next')) 
+                            return 'from-cyan-500/10 to-blue-500/10 border-cyan-500/30 dark:border-cyan-500/20 text-cyan-700 dark:text-cyan-400 hover:border-cyan-500/50';
+                          if (techName.includes('Spring') || techName.includes('Java')) 
+                            return 'from-green-500/10 to-emerald-500/10 border-green-500/30 dark:border-green-500/20 text-green-700 dark:text-green-400 hover:border-green-500/50';
+                          if (techName.includes('TypeScript') || techName.includes('Node')) 
+                            return 'from-blue-500/10 to-indigo-500/10 border-blue-500/30 dark:border-blue-500/20 text-blue-700 dark:text-blue-400 hover:border-blue-500/50';
+                          if (techName.includes('Cloud') || techName.includes('AI')) 
+                            return 'from-purple-500/10 to-pink-500/10 border-purple-500/30 dark:border-purple-500/20 text-purple-700 dark:text-purple-400 hover:border-purple-500/50';
+                          if (techName.includes('Tailwind') || techName.includes('CSS')) 
+                            return 'from-sky-500/10 to-cyan-500/10 border-sky-500/30 dark:border-sky-500/20 text-sky-700 dark:text-sky-400 hover:border-sky-500/50';
+                          if (techName.includes('System') || techName.includes('Administration'))
+                            return 'from-gray-500/10 to-slate-500/10 border-gray-500/30 dark:border-gray-500/20 text-gray-700 dark:text-gray-400 hover:border-gray-500/50';
+                          return 'from-gray-500/10 to-gray-500/10 border-gray-500/30 dark:border-gray-500/20 text-gray-700 dark:text-gray-400 hover:border-gray-500/50';
+                        };
+                        
+                        return (
+                          <motion.span
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: i * 0.05 }}
+                            viewport={{ once: true }}
+                            whileHover={{ scale: 1.1, y: -3 }}
+                            className={`px-3 py-1.5 bg-gradient-to-br ${getColor(tech)} rounded-lg text-xs font-semibold border transition-all cursor-default shadow-sm`}
+                          >
+                            {tech}
+                          </motion.span>
+                        );
+                      })}
+                      </div>
+                    )}
                   </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
