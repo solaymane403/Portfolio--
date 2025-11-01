@@ -7,7 +7,7 @@ import { Music, Play, Pause, Volume2, VolumeX, SkipForward, SkipBack } from "luc
 const TRACKS = [
   { name: "Velvet Sutra", src: "/music/Velvet Sutra - Ruck P.mp3" },
   { name: "Keep Going - Swørn", src: "/music/Keep Going - Swørn.mp3" },
-  { name: "Track 3", src: "/music/track3.mp3" },
+  { name: "X-plosaó - Rais Shaikh", src: "/music/X-plosaó - Rais Shaikh.mp3" },
 ];
 
 const STORAGE_KEYS = {
@@ -148,7 +148,7 @@ export default function BackgroundMusic() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 group">
+    <div className="fixed bottom-24 right-8 z-50 group">
       {/* Track Info - Appears on hover */}
       <div className="absolute bottom-full right-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
         <div className="bg-gradient-to-r from-blue-500/90 to-purple-500/90 backdrop-blur-md text-white px-4 py-2 rounded-xl shadow-2xl border border-white/20">
@@ -162,36 +162,36 @@ export default function BackgroundMusic() {
       </div>
 
       {/* Main Player - Modern Glassmorphic Design */}
-      <div className="bg-gradient-to-br from-white/95 to-gray-50/95 dark:from-gray-800/95 dark:to-gray-900/95 backdrop-blur-xl border border-white/40 dark:border-gray-700/40 shadow-2xl rounded-3xl p-4 flex flex-col gap-3 min-w-[280px] transition-all duration-300 hover:shadow-blue-500/20 hover:shadow-3xl">
+  <div className="bg-gradient-to-br from-white/95 to-gray-50/95 dark:from-gray-800/95 dark:to-gray-900/95 backdrop-blur-xl border border-white/40 dark:border-gray-700/40 shadow-2xl rounded-2xl p-3 flex flex-col gap-2 min-w-[220px] text-sm transition-all duration-300 hover:shadow-blue-500/20">
         
         {/* Controls Row */}
         <div className="flex items-center justify-center gap-2">
           {/* Previous Track */}
           <button
             onClick={prevTrack}
-            className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-200 flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-lg hover:shadow-xl"
+            className="w-9 h-9 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-200 flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-lg"
             aria-label="Previous track"
           >
-            <SkipBack className="w-4 h-4" />
+            <SkipBack className="w-3.5 h-3.5" />
           </button>
 
           {/* Play / Pause - Large Central Button */}
           <button
             onClick={togglePlay}
-            className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 text-white flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all relative overflow-hidden group/btn"
+            className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 text-white flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all relative overflow-hidden group/btn"
             aria-label={playing ? "Pause" : "Play"}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
-            {playing ? <Pause className="w-6 h-6 relative z-10" /> : <Play className="w-6 h-6 relative z-10 ml-1" />}
+            {playing ? <Pause className="w-5 h-5 relative z-10" /> : <Play className="w-5 h-5 relative z-10 ml-0.5" />}
           </button>
 
           {/* Next Track */}
           <button
             onClick={nextTrack}
-            className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-200 flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-lg hover:shadow-xl"
+            className="w-9 h-9 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-200 flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-lg"
             aria-label="Next track"
           >
-            <SkipForward className="w-4 h-4" />
+            <SkipForward className="w-3.5 h-3.5" />
           </button>
         </div>
 
@@ -200,10 +200,10 @@ export default function BackgroundMusic() {
           {/* Mute Button */}
           <button
             onClick={toggleMute}
-            className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+            className="w-7 h-7 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
             aria-label={muted ? "Unmute" : "Mute"}
           >
-            {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            {muted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
           </button>
 
           {/* Volume Slider with Music Icon */}
@@ -223,13 +223,13 @@ export default function BackgroundMusic() {
         </div>
 
         {/* Progress indicator dots */}
-        <div className="flex justify-center gap-1.5 pt-1">
+        <div className="flex justify-center gap-1 pt-1">
           {TRACKS.map((_, idx) => (
             <div
               key={idx}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 idx === currentTrack
-                  ? 'w-6 bg-gradient-to-r from-blue-500 to-purple-500'
+                  ? 'w-4 bg-gradient-to-r from-blue-500 to-purple-500'
                   : 'w-1.5 bg-gray-300 dark:bg-gray-600'
               }`}
             />
