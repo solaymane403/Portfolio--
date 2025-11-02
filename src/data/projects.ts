@@ -33,7 +33,7 @@ export const projects: Project[] = [
     longDescription: "Tech Stack: React 18, Tailwind CSS, PostCSS, Autoprefixer, Axios, STOMP, SockJS, Context API, lucide-react, React Testing Library, Jest, JDK 25, Maven Wrapper, MySQL, PowerShell.",
     image: ["gamehub-1.png","gamehub-2.png","gamehub-3.png"],
     techStack: ["React 18", "Tailwind CSS", "PostCSS", "Axios", "STOMP", "SockJS", "lucide-react",  "JDK 25", "Maven Wrapper", "MySQL"],
-    liveUrl: "https://github.com/solaymane403/Tic-Tac-Toe-Game.git",
+    liveUrl: "https://takigame.netlify.app",
     githubUrl: "https://github.com/solaymane403/Tic-Tac-Toe-Game.git",
     category: "static",
     featured: false,
