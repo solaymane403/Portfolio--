@@ -136,10 +136,8 @@ Building creative and functional web experiences with modern technologies and cl
             </p>
             
             <div className="flex items-center gap-2 text-gray-500 text-sm">
-              <span>Crafted with</span>
+              <span>I hope you like it</span>
               <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
-              <span>& lots of</span>
-              <span className="text-purple-400">☕</span>
             </div>
           </div>
         </div>

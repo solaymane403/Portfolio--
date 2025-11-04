@@ -11,14 +11,14 @@ import RevealText from './RevealText';
 export default function Hero() {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/solaymane403', label: 'GitHub', color: 'hover:text-gray-900 dark:hover:text-white' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/soulaimane-haddach', label: 'LinkedIn', color: 'hover:text-blue-600' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/soulaiman-haddash-06a15b387/', label: 'LinkedIn', color: 'hover:text-blue-600' },
     { icon: Mail, href: 'mailto:soulaimanok@gmail.com', label: 'Email', color: 'hover:text-red-500' },
   ];
 
   const stats = [
     { icon: Code2, value: '15+', label: 'Projects', color: 'from-blue-500 to-cyan-500' },
     { icon: Sparkles, value: '3+', label: 'Years Exp', color: 'from-purple-500 to-pink-500' },
-    { icon: Rocket, value: '100%', label: 'Dedication', color: 'from-orange-500 to-red-500' },
+    { icon: Rocket, value: '80%', label: 'self-learning', color: 'from-orange-500 to-red-500' },
   ];
 
   return (
@@ -45,7 +45,7 @@ export default function Hero() {
             >
               <Sparkles className="w-4 h-4 text-purple-500" />
               <span className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Available for Freelance
+                Available for Remote / Relocation
               </span>
             </motion.div>
 
@@ -130,6 +130,7 @@ export default function Hero() {
               <MagneticButton
                 href="en it.pdf"
                 className="btn-secondary group"
+                
               >
                 <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                 Download CV
